@@ -1,0 +1,158 @@
+//GIRAN TO MARTYR NECRO
+
+var
+  item: TL2Item;
+  buff: TL2Buff;
+
+procedure GetBuff;
+begin
+  if not User.Buffs.ByID(1204, buff) then 
+  begin
+    Engine.EnterText('Buffs are needed. Buffing...');
+    Engine.MoveTo(83470,148643,-3400);  //CHURCH ENTRANCE 
+    Engine.MoveTo(83439,147959,-3400);  //BUFF NPC
+    Delay(500);
+    Engine.SetTarget('Skufidon');
+    Delay(200);
+    Engine.DlgOpen;
+    Delay(200);
+    Engine.DlgSel(4);
+    Delay(200);
+    Engine.DlgSel(9);
+    Delay(200);
+    Engine.DlgSel(10);
+    Delay(200);
+    Engine.DlgSel(11);
+    Delay(500);
+    Engine.MoveTo(83470,148643,-3400);  //CHURCH ENTRANCE 
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+  end;
+end;
+
+procedure GetToCata;
+begin
+  if User.InRange(83372, 149239, -3400, 300, 200) and User.Buffs.ByID(1204, buff) then 
+  begin
+    Engine.SetTarget(31081);
+    Delay(200);
+    Engine.DlgOpen;
+    Delay(300);
+    Engine.DlgSel(4);
+    Delay(300);
+    Engine.DlgSel(1);
+    Delay(1000);
+    Engine.MoveTo(115321,132358,-3096);
+ Engine.MoveTo(115300,133178,-3096);
+    Delay(360);      //huge delay on MA so pt dont kill them selfs all the time
+    Engine.SetTarget('Gatekeeper Ziggurat');
+    Delay(200);
+    Engine.DlgOpen;
+    Delay(300);
+    Engine.DlgSel(1);
+    Delay(1000);
+ Engine.MoveTo(118651, 132860, -4824);
+ Engine.MoveTo(118689, 133834, -4824);
+ Engine.MoveTo(120076, 133849, -4824);
+Delay(300);
+Engine.FaceControl(0, true);
+  end;
+end;
+
+procedure GetToDawn;
+begin
+  if User.InRange(82324, 14815, -3464, 750, 300) then 
+  begin
+    Engine.MoveTo(82852, 14855, -3464);  //MIDLE OF STREET
+    Engine.MoveTo(83094, 149089, -3464); //STAIRS
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+
+    Exit;
+  end;
+
+  if User.InRange(81046, 149166, -3464, 750, 600) then 
+  begin
+    Engine.MoveTo(82011, 149481, -3464);   //MANOR
+ Engine.MoveTo(83094, 149089, -3464); //STAIRS
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+    Exit;
+  end;
+
+  if User.InRange(81050, 148096, -3464, 750, 600) then 
+  begin
+    Engine.MoveTo(82062, 147674, -3464); //OLY NPC   
+    Engine.MoveTo(82864, 147875, -3464); //ADVEMTIRE GUILDS NPC
+Engine.MoveTo(82852, 14855, -3464);  //MIDLE OF STREET
+    Engine.MoveTo(83094, 149089, -3464); //STAIRS
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+              Exit;
+  end;
+
+
+    if User.InRange(82062, 147674, -3464, 750, 600) then 
+  begin
+    Engine.MoveTo(82864, 147875, -3464); //ADVEMTIRE GUILDS NPC
+Engine.MoveTo(82852, 14855, -3464);  //MIDLE OF STREET
+    Engine.MoveTo(83094, 149089, -3464); //STAIRS
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+              Exit;
+  end;
+
+  if User.InRange(83426, 148573, -3400, 750, 600) then 
+  begin
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+    Exit;
+  end;
+
+  if User.InRange(82302, 149436, -3464, 750, 600) then 
+  begin
+Engine.MoveTo(83094, 149089, -3464); //STAIRS
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+    Exit;
+  end;
+
+  if User.InRange(84893, 147347, -3400, 1500, 600) then 
+  begin
+    Engine.MoveTo(83600, 147879, -3400);   //GK
+  Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+    Exit;
+  end;
+end;
+
+begin
+  while true do
+  begin
+    
+if User.Dead then
+    begin
+Engine.FaceControl(0, false);
+delay(500);
+Engine.GoHome(rtTown);
+      Delay(3000);
+    end;
+
+
+ if not User.Buffs.ByID(1204, buff) then begin
+Engine.Entertext('/unstuck');
+delay(18000);
+end;
+
+    if not User.InRange(83372, 149239, -3400, 333, 333) then
+    begin
+      GetToDawn;
+      Delay(1000);
+    end;
+
+    if not User.Buffs.ByID(1204, buff) and User.InRange(83372, 149239, -3400, 333, 333) then
+    begin
+      GetBuff;
+      Delay(1000);
+    end
+    else if User.Buffs.ByID(1204, buff) and User.InRange(83372, 149239, -3400, 333, 333) then
+    begin
+      GetToCata;
+      Delay(1000);
+    end;
+    
+    Delay(500);
+  end;
+end.
