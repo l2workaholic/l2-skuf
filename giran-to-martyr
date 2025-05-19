@@ -54,6 +54,8 @@ begin
  Engine.MoveTo(118689, 133834, -4824);
  Engine.MoveTo(120076, 133849, -4824);
 Delay(300);
+Engine.LoadZone('Martyr1.zmap');
+Delay(300);
 Engine.FaceControl(0, true);
   end;
 end;
