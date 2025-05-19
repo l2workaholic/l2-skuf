@@ -14,16 +14,22 @@ begin
     Delay(500);
     Engine.SetTarget('Skufidon');
     Delay(200);
-    Engine.DlgOpen;
-    Delay(200);
-    Engine.DlgSel(4);
-    Delay(200);
+   Engine.DlgOpen;
+    Delay(1000);
+    Engine.DlgSel(7);
+    Delay(1000);
     Engine.DlgSel(9);
-    Delay(200);
+     Delay(1000);
     Engine.DlgSel(10);
-    Delay(200);
+    Delay(1000);
+    Engine.DlgSel(9);
+   Delay(1000);
+    Engine.DlgSel(10);
+    Delay(1000);
     Engine.DlgSel(11);
-    Delay(500);
+  Delay(1000);
+    Engine.DlgSel(4);
+  Delay(500);
     Engine.MoveTo(83470,148643,-3400);  //CHURCH ENTRANCE 
     Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
   end;
