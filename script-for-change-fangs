@@ -1,0 +1,15 @@
+var
+  i: integer;
+begin
+  for  i := 0  to  20  do
+  begin
+
+    Engine.BypassToServer ('Quest Q640_TheZeroHour 0'); // Enria
+
+    Delay (200);
+    Engine.BypassToServer ('Quest Q640_TheZeroHour 31554-05.htm');
+    Delay (200);
+asdasd
+Delay (200);
+  end;
+end.
