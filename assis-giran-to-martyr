@@ -1,4 +1,4 @@
-//GIRAN TO MARTYR NECRO
+//GIRAN TO MARTYR NECRO + troca de sala
 
 var
   item: TL2Item;
@@ -137,6 +137,9 @@ delay(500);
 Engine.GoHome(rtTown);
       Delay(3000);
     end;
+
+
+
 
 
  if not User.Buffs.ByID(1204, buff) then begin
