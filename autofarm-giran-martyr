@@ -35,6 +35,33 @@ begin
   end;
 end;
 
+{procedure GetBuff;
+begin
+  if not User.Buffs.ByID(1204, buff) then 
+  begin
+    Engine.EnterText('Buffs are needed. Buffing...');
+    Engine.MoveTo(83470,148643,-3400);  //CHURCH ENTRANCE 
+    Engine.MoveTo(83439,147959,-3400);  //BUFF NPC
+    Delay(500);
+    Engine.SetTarget('Skufidon');
+    Delay(200);
+   Engine.DlgOpen;
+    Delay(1000);
+    Engine.DlgSel(7);
+    Delay(1000);
+    Engine.DlgSel(9);
+     Delay(1000);
+    Engine.DlgSel(10);
+    Delay(1000);
+    Engine.DlgSel(12);
+   Delay(1000);
+    Engine.DlgSel(5);
+  Delay(500);
+    Engine.MoveTo(83470,148643,-3400);  //CHURCH ENTRANCE 
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+  end;
+end;}
+
 procedure GetToCata;
 begin
   if User.InRange(83372, 149239, -3400, 300, 200) and User.Buffs.ByID(1204, buff) then 
