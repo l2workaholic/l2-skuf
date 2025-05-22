@@ -1,8 +1,9 @@
-            //DKE to DEVOTION + troca de sala
+            //DKE to DEVOTION + troca de sala + compra mais ss se for preciso
 
 var
   item: TL2Item;
   buff: TL2Buff;
+  Soulshot_C:TL2Item;
 
 procedure GetBuff;
 begin
@@ -47,6 +48,43 @@ Engine.MoveTo(9732, 15641, -4583);
 Engine.MoveTo(9716, 15564, -4583); //gk de dke
   end;
 end;
+
+procedure GetSS;
+  begin
+Engine.MoveTo(9759, 15619, -4583); //gk dke
+Engine.MoveTo(9925, 16035, -4583);
+Engine.MoveTo(10219, 16834, -4593);
+Engine.MoveTo(10530, 16771, -4593);
+Engine.MoveTo(10614, 16947, -4592);
+Engine.MoveTo(11175, 16853, -4670);
+Engine.MoveTo(11441, 16714, -4670);
+Engine.MoveTo(11846, 16696, -4651);
+Engine.MoveTo(12106, 16736, -4582); //soulshot seller npc
+    Delay(500);
+    Engine.SetTarget('Altushka');
+    Delay(200);
+   Engine.DlgOpen;
+    Delay(1000);
+    Engine.DlgSel(3);
+    Delay(1000);
+   Engine.NpcExchange(3, 9999, true);
+     Delay(1000);
+    Engine.NpcExchange(3, 9999, true);
+    Delay(1000);
+    Engine.NpcExchange(3, 9999, true);
+   Delay(1000);
+    Engine.NpcExchange(3, 9999, true);
+    Delay(1000);
+  Delay(500);
+Engine.MoveTo(11594, 16755, -4670); //npc buff de dke
+Engine.MoveTo(11204, 16811, -4670);
+Engine.MoveTo(10571, 16939, -4592);
+Engine.MoveTo(10225, 16766, -4593);
+Engine.MoveTo(10009, 16485, -4583);
+Engine.MoveTo(9890, 16063, -4583);
+Engine.MoveTo(9732, 15641, -4583);
+Engine.MoveTo(9716, 15564, -4583); //gk de dke
+     end;
 
 procedure GetToCata;
 begin
@@ -116,22 +154,8 @@ end; // Este end fecha a procedure GetToGKofDKE
 begin             //CODE BODY HERE
   while true do
   begin
-    
-if User.Dead then
-    begin
-Engine.FaceControl(0, false);
-delay(500);
-Engine.GoHome(rtTown);
-      Delay(3000);
-    end;
 
-if not User.Buffs.ByID(1204, buff) then begin
- Engine.FaceControl(0, false);
-Engine.Entertext('/unstuck');
-delay(18000);
-end;
-
- {
+{
 if not User.InCombat and User.InRange(-51905, 81152, -4747, 500, 600) then
     begin
 Engine.FaceControl(0, false);
@@ -171,26 +195,56 @@ delay(1000);
 Engine.Attack(1000, True);
 delay(5000);
     end;
-  }
+     }
+     
 
+    // 1. First check death
+    if User.Dead then
+    begin
+      Engine.FaceControl(0, false);
+      delay(500);
+      Engine.GoHome(rtTown);
+      Delay(3000);
+      Continue;  // Skip rest of loop
+    end;
 
+    // 2. Then check if we need Soulshots (anywhere in DKE)
+    if (Inventory.User.ByID(1464, Soulshot_C) = false) and User.InRange(9759, 15619, -4583, 5000, 5000) or (Inventory.User.ByID(1464, Soulshot_C) = true) and (Soulshot_C.Count < 40000) and User.InRange(9759, 15619, -4583, 5000, 5000) then
+    begin
+      GetToGKofDKE;
+      Engine.EnterText('Need to buy more Soulshots...');
+      GetSS;
+      Delay(1000);
+      Continue;  // After getting SS, restart loop
+    end;
 
+    // 3. Then check if we're unbuffed
+    if not User.Buffs.ByID(1204, buff) then 
+    begin
+      Engine.FaceControl(0, false);
+      Engine.Entertext('/unstuck');
+      delay(18000);
+      Continue;
+    end;
+
+    // 4. Then check if we need to return to GK
     if not User.InRange(9759, 15619, -4583, 333, 333) then
     begin
       GetToGKofDKE;
       Delay(1000);
+      Continue;
     end;
 
-    if not User.Buffs.ByID(1204, buff) and User.InRange(9759, 15619, -4583, 333, 333) then
-    begin
-      GetBuff;
-      Delay(1000);
-    end
-    else if User.Buffs.ByID(1204, buff) and User.InRange(9759, 15619, -4583, 333, 333) then
+    // 5. Finally, if we have buffs and are at GK, teleport
+    if User.Buffs.ByID(1204, buff) and User.InRange(9759, 15619, -4583, 333, 333) then
     begin
       GetToCata;
       Delay(1000);
     end;
+    
+    Delay(500);
+  end;
+end.
     
     Delay(500);
   end;
