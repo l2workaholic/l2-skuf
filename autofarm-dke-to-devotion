@@ -1,4 +1,4 @@
-//DKE to DEVOTION + troca de sala
+            //DKE to DEVOTION + troca de sala
 
 var
   item: TL2Item;
@@ -113,7 +113,7 @@ begin
   end;
 end; // Este end fecha a procedure GetToGKofDKE
 
-begin
+begin             //CODE BODY HERE
   while true do
   begin
     
@@ -125,7 +125,13 @@ Engine.GoHome(rtTown);
       Delay(3000);
     end;
 
+if not User.Buffs.ByID(1204, buff) then begin
+ Engine.FaceControl(0, false);
+Engine.Entertext('/unstuck');
+delay(18000);
+end;
 
+ {
 if not User.InCombat and User.InRange(-51905, 81152, -4747, 500, 600) then
     begin
 Engine.FaceControl(0, false);
@@ -165,13 +171,9 @@ delay(1000);
 Engine.Attack(1000, True);
 delay(5000);
     end;
+  }
 
 
- if not User.Buffs.ByID(1204, buff) then begin
- Engine.FaceControl(0, false);
-Engine.Entertext('/unstuck');
-delay(18000);
-end;
 
     if not User.InRange(9759, 15619, -4583, 333, 333) then
     begin
