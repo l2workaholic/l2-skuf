@@ -1,4 +1,4 @@
-            //DKE to DEVOTION + troca de sala + compra mais ss se for preciso
+            //DKE to DEVOTION + troca de sala
 
 var
   item: TL2Item;
@@ -205,8 +205,7 @@ delay(5000);
       delay(500);
       Engine.GoHome(rtTown);
       Delay(3000);
-      Continue;  // Skip rest of loop
-    end;
+        end;
 
     // 2. Then check if we need Soulshots (anywhere in DKE)
     if (Inventory.User.ByID(1464, Soulshot_C) = false) and User.InRange(9759, 15619, -4583, 5000, 5000) or (Inventory.User.ByID(1464, Soulshot_C) = true) and (Soulshot_C.Count < 40000) and User.InRange(9759, 15619, -4583, 5000, 5000) then
@@ -215,27 +214,32 @@ delay(5000);
       Engine.EnterText('Need to buy more Soulshots...');
       GetSS;
       Delay(1000);
-      Continue;  // After getting SS, restart loop
-    end;
+              end;
 
     // 3. Then check if we're unbuffed
-    if not User.Buffs.ByID(1204, buff) then 
+    if not User.Buffs.ByID(1204, buff) and not User.InRange(9759, 15619, -4583, 333, 333) then 
     begin
       Engine.FaceControl(0, false);
       Engine.Entertext('/unstuck');
       delay(18000);
-      Continue;
-    end;
+      GetToGKofDKE;
+          end;
 
     // 4. Then check if we need to return to GK
     if not User.InRange(9759, 15619, -4583, 333, 333) then
     begin
       GetToGKofDKE;
       Delay(1000);
-      Continue;
-    end;
+           end;
 
-    // 5. Finally, if we have buffs and are at GK, teleport
+    // 5. if we dont have buffs 
+    if not User.Buffs.ByID(1204, buff) and User.InRange(9759, 15619, -4583, 333, 333) then
+    begin
+      GetBuff;
+      Delay(1000);
+    end;           
+
+    // 6. Finally, if we have buffs and are at GK, teleport
     if User.Buffs.ByID(1204, buff) and User.InRange(9759, 15619, -4583, 333, 333) then
     begin
       GetToCata;
