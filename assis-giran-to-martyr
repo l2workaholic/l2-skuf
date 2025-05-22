@@ -3,6 +3,7 @@
 var
   item: TL2Item;
   buff: TL2Buff;
+  Soulshot_C:TL2Item;
 
 procedure GetBuff;
 begin
@@ -34,6 +35,33 @@ begin
     Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
   end;
 end;
+
+procedure GetSS;
+  begin
+Engine.MoveTo(83366, 149210, -3413); //giran dawn
+Engine.MoveTo(83388, 148674, -3413);
+Engine.MoveTo(83403, 148289, -3413);
+Engine.MoveTo(83290, 147938, -3413); //soulshot seller npc
+    Delay(500);
+    Engine.SetTarget('Altushka');
+    Delay(200);
+   Engine.DlgOpen;
+    Delay(1000);
+    Engine.DlgSel(3);
+    Delay(1000);
+   Engine.NpcExchange(3, 9999, true);
+     Delay(1000);
+    Engine.NpcExchange(3, 9999, true);
+    Delay(1000);
+    Engine.NpcExchange(3, 9999, true);
+   Delay(1000);
+    Engine.NpcExchange(3, 9999, true);
+    Delay(1000);
+  Delay(500);
+Engine.MoveTo(83403, 148289, -3413);
+Engine.MoveTo(83388, 148674, -3413);
+Engine.MoveTo(83366, 149210, -3413); //giran dawn
+     end;
 
 procedure GetToCata;
 begin
@@ -126,44 +154,98 @@ Engine.MoveTo(83094, 149089, -3464); //STAIRS
   end;
 end;
 
-begin
+begin        //code body HERE
   while true do
   begin
-    
-if User.Dead then
+
+  {
+if not User.InCombat and User.InRange(120082, 133574, -4824, 800, 600) then
     begin
 Engine.FaceControl(0, false);
-delay(500);
-Engine.GoHome(rtTown);
-      Delay(3000);
+Engine.MoveTo(120082, 133574, -4824);
+Engine.MoveTo(119472, 133871, -4824);
+Engine.MoveTo(118936, 133912, -4824);
+Engine.MoveTo(118976, 135027, -4824);
+Engine.LoadZone('Martyr0.zmap');
+delay(300);
+Engine.FaceControl(0, true);
+delay(300);
+engine.settarget('Lilim Assassin');
+delay(300);
+Engine.Attack(1000, True);
+delay(1000);
+Engine.Attack(1000, True);
+delay(5000);
     end;
 
-
-
-
-
- if not User.Buffs.ByID(1204, buff) then begin
-Engine.Entertext('/unstuck');
+if not User.InCombat and User.InRange(118976, 135027, -4824, 600, 600) then
+    begin
 Engine.FaceControl(0, false);
-delay(18000);
-end;
+Engine.MoveTo(118976, 135027, -4824);
+Engine.MoveTo(118936, 133912, -4824);
+Engine.MoveTo(119472, 133871, -4824);
+Engine.MoveTo(120082, 133574, -4824);
+Engine.LoadZone('Martyr1.zmap');
+Engine.FaceControl(0, true);
+engine.settarget('Lilim Assassin');
+delay(300);
+Engine.Attack(1000, True);
+delay(1000);
+delay(300);
+Engine.Attack(1000, True);
+delay(1000);
+Engine.Attack(1000, True);
+delay(5000);
+    end;        }
 
+    // 1. First check death
+    if User.Dead then
+    begin
+      Engine.FaceControl(0, false);
+      delay(500);
+      Engine.GoHome(rtTown);
+      Delay(3000);
+        end;
+
+    // 2. Then check if we need Soulshots (anywhere in DKE)
+    if (Inventory.User.ByID(1464, Soulshot_C) = false) and User.InRange(9759, 15619, -4583, 5000, 5000) or (Inventory.User.ByID(1464, Soulshot_C) = true) and (Soulshot_C.Count < 40000) and not User.InRange(83372, 149239, -3400, 300, 5000) then
+    begin
+      GetToDawn;
+      Engine.EnterText('Need to buy more Soulshots...');
+      GetSS;
+      Delay(1000);
+              end;
+
+    // 3. Then check if we're unbuffed
+    if not User.Buffs.ByID(1204, buff) and not User.InRange(83372, 149239, -3400, 333, 333) then 
+    begin
+      Engine.FaceControl(0, false);
+      Engine.Entertext('/unstuck');
+      delay(18000);
+      GetToDawn;
+          end;
+
+    // 4. Then check if we need to return to GK
     if not User.InRange(83372, 149239, -3400, 333, 333) then
     begin
       GetToDawn;
       Delay(1000);
-    end;
+           end;
 
+    // 5. if we dont have buffs 
     if not User.Buffs.ByID(1204, buff) and User.InRange(83372, 149239, -3400, 333, 333) then
     begin
       GetBuff;
       Delay(1000);
-    end
-    else if User.Buffs.ByID(1204, buff) and User.InRange(83372, 149239, -3400, 333, 333) then
+    end;  
+
+    // 6. Finally, if we have buffs and are at GK, teleport
+    if User.Buffs.ByID(1204, buff) and User.InRange(83372, 149239, -3400, 333, 333) then
     begin
       GetToCata;
       Delay(1000);
-    end;
+    end;      
+
     
     Delay(500);
   end;
