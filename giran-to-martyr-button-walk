@@ -1,0 +1,290 @@
+//GIRAN TO MARTYR NECRO + troca de sala
+
+var
+  item: TL2Item;
+  buff: TL2Buff;
+
+procedure GetBuff;
+begin
+  if not User.Buffs.ByID(1204, buff) then 
+  begin
+    Engine.EnterText('Buffs are needed. Buffing...');
+    Engine.MoveTo(83470,148643,-3400);  //CHURCH ENTRANCE 
+    Engine.MoveTo(83439,147959,-3400);  //BUFF NPC
+    Delay(500);
+    Engine.SetTarget('Skufidon');
+    Delay(200);
+   Engine.DlgOpen;
+    Delay(1000);
+    Engine.DlgSel(7);
+    Delay(1000);
+    Engine.DlgSel(9);
+     Delay(1000);
+    Engine.DlgSel(10);
+    Delay(1000);
+    Engine.DlgSel(9);
+   Delay(1000);
+    Engine.DlgSel(10);
+    Delay(1000);
+    Engine.DlgSel(11);
+  Delay(1000);
+    Engine.DlgSel(4);
+  Delay(500);
+    Engine.MoveTo(83470,148643,-3400);  //CHURCH ENTRANCE 
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+  end;
+end;
+
+procedure GetToCata;
+begin
+  if User.InRange(83372, 149239, -3400, 300, 200) and User.Buffs.ByID(1204, buff) then 
+  begin
+
+Engine.Entertext('I cant Teleport Then I Will Walk');
+Engine.MoveTo(83440, 148894, -3413);
+Engine.MoveTo(83508, 148519, -3413);
+Engine.MoveTo(83566, 148105, -3413);
+Engine.MoveTo(83758, 147692, -3413);
+Engine.MoveTo(84282, 147525, -3413);
+Engine.MoveTo(84822, 147387, -3413);
+Engine.MoveTo(85249, 147363, -3413);
+Engine.MoveTo(85782, 147366, -3408);
+Engine.MoveTo(86323, 147359, -3413);
+Engine.MoveTo(87041, 147354, -3413);
+Engine.MoveTo(87759, 147349, -3413);
+Engine.MoveTo(88408, 147348, -3413);
+Engine.MoveTo(89286, 147341, -3541);
+Engine.MoveTo(89924, 147335, -3541);
+Engine.MoveTo(90513, 147303, -3539);
+Engine.MoveTo(90761, 147109, -3534);
+Engine.MoveTo(90727, 146482, -3525);
+Engine.MoveTo(90649, 145712, -3480);
+Engine.MoveTo(90672, 145037, -3425);
+Engine.MoveTo(90744, 144024, -3301);
+Engine.MoveTo(90687, 143511, -3257);
+Engine.MoveTo(90552, 142890, -3343);
+Engine.MoveTo(90475, 142224, -3427);
+Engine.MoveTo(90379, 141177, -3580);
+Engine.MoveTo(91699, 139628, -3638);
+Engine.MoveTo(92005, 139044, -3634);
+Engine.MoveTo(92347, 138737, -3626);
+Engine.MoveTo(92753, 138550, -3614);
+Engine.MoveTo(93589, 138239, -3622);
+Engine.MoveTo(94072, 137989, -3605);
+Engine.MoveTo(94734, 137747, -3607);
+Engine.MoveTo(95387, 137770, -3627);
+Engine.MoveTo(96231, 137817, -3612);
+Engine.MoveTo(97699, 137570, -3583);
+Engine.MoveTo(98608, 137628, -3546);
+Engine.MoveTo(99206, 137688, -3515);
+Engine.MoveTo(99792, 137756, -3495);
+Engine.MoveTo(100328, 137785, -3441);
+Engine.MoveTo(101198, 137470, -3381);
+Engine.MoveTo(101786, 137242, -3377);
+Engine.MoveTo(102641, 136898, -3635);
+Engine.MoveTo(104106, 136303, -3625);
+Engine.MoveTo(105026, 136013, -3559);
+Engine.MoveTo(105606, 135836, -3507);
+Engine.MoveTo(106169, 135626, -3453);
+Engine.MoveTo(106995, 135410, -3336);
+Engine.MoveTo(107531, 135067, -3286);
+Engine.MoveTo(108318, 134510, -3329);
+Engine.MoveTo(108836, 134200, -3392);
+Engine.MoveTo(109518, 133980, -3536);
+Engine.MoveTo(110279, 133777, -3516);
+Engine.MoveTo(110623, 133615, -3407);
+Engine.MoveTo(111635, 133281, -3167);
+Engine.MoveTo(112429, 133067, -3027);
+Engine.MoveTo(112932, 132963, -2955);
+Engine.MoveTo(113294, 132817, -2917);
+Engine.MoveTo(113673, 132693, -2966);
+Engine.MoveTo(114062, 133033, -3044);
+Engine.MoveTo(114570, 133240, -3111);
+Engine.MoveTo(115230, 133214, -3111);
+
+Engine.SetTarget('Gatekeeper Ziggurat');
+    Delay(200);
+    Engine.DlgOpen;
+    Delay(300);
+    Engine.DlgSel(1);
+    Delay(300);
+
+Engine.MoveTo(118616, 132846, -4837);
+Engine.MoveTo(118651, 133440, -4839);
+Engine.MoveTo(118726, 133832, -4839);
+Engine.MoveTo(119232, 133835, -4839);
+Engine.MoveTo(119703, 133817, -4839);
+Engine.MoveTo(120138, 133437, -4837);
+Engine.MoveTo(120559, 133085, -4839);
+Engine.MoveTo(121021, 133080, -4839);
+Engine.MoveTo(121369, 133168, -4839);
+Engine.MoveTo(121362, 133741, -4837);
+Engine.MoveTo(121363, 134398, -4837);
+Engine.MoveTo(122254, 134475, -4839);
+Engine.MoveTo(122353, 134922, -4839);
+Engine.MoveTo(122864, 134917, -4839);
+Engine.MoveTo(123251, 134882, -4839);
+Engine.MoveTo(123258, 134206, -4839);
+Engine.MoveTo(123255, 133543, -4839);
+Engine.MoveTo(123262, 133088, -4837);
+Engine.MoveTo(123430, 132827, -4837);
+Engine.MoveTo(123965, 132801, -4837);
+Engine.MoveTo(124668, 132813, -4837);
+Engine.MoveTo(125566, 132808, -4839);
+Engine.MoveTo(126078, 132850, -4839);
+Engine.MoveTo(126067, 133116, -4839);
+Engine.MoveTo(126152, 133280, -4839);
+Engine.MoveTo(126656, 133312, -4837);
+Engine.MoveTo(127026, 133325, -4837);
+Engine.MoveTo(127045, 133764, -4837);
+Engine.MoveTo(127054, 134461, -4839);
+Engine.MoveTo(127033, 134853, -4837);
+Engine.MoveTo(127104, 134930, -4837);
+
+
+
+Delay(300);
+Engine.LoadZone('MartyrButton1.zmap');
+Delay(300);
+Engine.FaceControl(0, true);
+  end;
+end;
+
+procedure GetToDawn;
+begin
+  if User.InRange(82324, 14815, -3464, 750, 300) then 
+  begin
+    Engine.MoveTo(82852, 14855, -3464);  //MIDLE OF STREET
+    Engine.MoveTo(83094, 149089, -3464); //STAIRS
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+       Exit;
+  end;
+
+  if User.InRange(81046, 149166, -3464, 750, 600) then 
+  begin
+    Engine.MoveTo(82011, 149481, -3464);   //MANOR
+ Engine.MoveTo(83094, 149089, -3464); //STAIRS
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+    Exit;
+  end;
+
+  if User.InRange(81050, 148096, -3464, 750, 600) then 
+  begin
+    Engine.MoveTo(82062, 147674, -3464); //OLY NPC   
+    Engine.MoveTo(82864, 147875, -3464); //ADVEMTIRE GUILDS NPC
+Engine.MoveTo(82852, 14855, -3464);  //MIDLE OF STREET
+    Engine.MoveTo(83094, 149089, -3464); //STAIRS
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+              Exit;
+  end;
+
+
+    if User.InRange(82062, 147674, -3464, 750, 600) then 
+  begin
+    Engine.MoveTo(82864, 147875, -3464); //ADVEMTIRE GUILDS NPC
+Engine.MoveTo(82852, 14855, -3464);  //MIDLE OF STREET
+    Engine.MoveTo(83094, 149089, -3464); //STAIRS
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+              Exit;
+  end;
+
+  if User.InRange(83426, 148573, -3400, 750, 600) then 
+  begin
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+    Exit;
+  end;
+
+  if User.InRange(82302, 149436, -3464, 750, 600) then 
+  begin
+Engine.MoveTo(83094, 149089, -3464); //STAIRS
+    Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+    Exit;
+  end;
+
+  if User.InRange(84893, 147347, -3400, 1500, 600) then 
+  begin
+    Engine.MoveTo(83600, 147879, -3400);   //GK
+  Engine.MoveTo(83372, 149239, -3400); //GIRAN DAWN
+    Exit;
+  end;
+end;
+
+begin
+  while true do
+  begin
+    
+if User.Dead then
+    begin
+Engine.FaceControl(0, false);
+delay(500);
+Engine.GoHome(rtTown);
+      Delay(3000);
+    end;
+{
+if not User.InCombat and User.InRange(120082, 133574, -4824, 800, 600) then
+    begin
+Engine.FaceControl(0, false);
+Engine.MoveTo(120082, 133574, -4824);
+Engine.MoveTo(119472, 133871, -4824);
+Engine.MoveTo(118936, 133912, -4824);
+Engine.MoveTo(118976, 135027, -4824);
+Engine.LoadZone('Martyr0.zmap');
+delay(300);
+Engine.FaceControl(0, true);
+delay(300);
+engine.settarget('Lilim Assassin');
+delay(300);
+Engine.Attack(1000, True);
+delay(1000);
+Engine.Attack(1000, True);
+delay(5000);
+    end;
+
+if not User.InCombat and User.InRange(118976, 135027, -4824, 600, 600) then
+    begin
+Engine.FaceControl(0, false);
+Engine.MoveTo(118976, 135027, -4824);
+Engine.MoveTo(118936, 133912, -4824);
+Engine.MoveTo(119472, 133871, -4824);
+Engine.MoveTo(120082, 133574, -4824);
+Engine.LoadZone('Martyr1.zmap');
+Engine.FaceControl(0, true);
+engine.settarget('Lilim Assassin');
+delay(300);
+Engine.Attack(1000, True);
+delay(1000);
+delay(300);
+Engine.Attack(1000, True);
+delay(1000);
+Engine.Attack(1000, True);
+delay(5000);
+    end;
+
+}
+
+ if not User.Buffs.ByID(1204, buff) then begin
+ Engine.FaceControl(0, false);
+Engine.Entertext('/unstuck');
+delay(18000);
+end;
+
+    if not User.InRange(83372, 149239, -3400, 333, 333) then
+    begin
+      GetToDawn;
+      Delay(1000);
+    end;
+
+    if not User.Buffs.ByID(1204, buff) and User.InRange(83372, 149239, -3400, 333, 333) then
+    begin
+      GetBuff;
+      Delay(1000);
+    end
+    else if User.Buffs.ByID(1204, buff) and User.InRange(83372, 149239, -3400, 333, 333) then
+    begin
+      GetToCata;
+      Delay(1000);
+    end;
+    
+    Delay(500);
+  end;
+end.
