@@ -1,0 +1,195 @@
+//DKE to DEVOTION + troca de sala
+
+var
+  item: TL2Item;
+  buff: TL2Buff;
+
+procedure GetBuff;
+begin
+  if not User.Buffs.ByID(1204, buff) then 
+  begin
+    Engine.EnterText('Buffs are needed. Buffing...');
+Engine.MoveTo(9759, 15619, -4583); //gk dke
+Engine.MoveTo(9925, 16035, -4583);
+Engine.MoveTo(10219, 16834, -4593);
+Engine.MoveTo(10530, 16771, -4593);
+Engine.MoveTo(10614, 16947, -4592);
+Engine.MoveTo(11175, 16853, -4670);
+Engine.MoveTo(11441, 16714, -4670);
+Engine.MoveTo(11846, 16696, -4651);
+Engine.MoveTo(12081, 16536, -4593); //buff npc de dke
+    Delay(500);
+    Engine.SetTarget('Skufidon');
+    Delay(200);
+   Engine.DlgOpen;
+    Delay(1000);
+    Engine.DlgSel(7);
+    Delay(1000);
+    Engine.DlgSel(9);
+     Delay(1000);
+    Engine.DlgSel(10);
+    Delay(1000);
+    Engine.DlgSel(9);
+   Delay(1000);
+    Engine.DlgSel(10);
+    Delay(1000);
+    Engine.DlgSel(11);
+  Delay(1000);
+    Engine.DlgSel(4);
+  Delay(500);
+Engine.MoveTo(11594, 16755, -4670); //npc buff de dke
+Engine.MoveTo(11204, 16811, -4670);
+Engine.MoveTo(10571, 16939, -4592);
+Engine.MoveTo(10225, 16766, -4593);
+Engine.MoveTo(10009, 16485, -4583);
+Engine.MoveTo(9890, 16063, -4583);
+Engine.MoveTo(9732, 15641, -4583);
+Engine.MoveTo(9716, 15564, -4583); //gk de dke
+  end;
+end;
+
+procedure GetToCata;
+begin
+  if User.InRange(9716, 15564, -4583, 300, 200) and User.Buffs.ByID(1204, buff) then 
+  begin
+
+Engine.Entertext('I Will Teleport to SpiderNest');
+   Delay(200);
+Engine.SetTarget('Jasmine');
+    Delay(200);
+    Engine.DlgOpen;
+    Delay(300);
+    Engine.DlgSel(1);
+    Delay(300);
+    Engine.DlgSel(7);
+    Delay(300);
+
+
+
+Engine.MoveTo(-60905, 75255, -3358);
+Engine.MoveTo(-60162, 75435, -3295);
+Engine.MoveTo(-59227, 75709, -3331);
+Engine.MoveTo(-58652, 75759, -3245);
+Engine.MoveTo(-58027, 76061, -3340);
+Engine.MoveTo(-57476, 76200, -3496);
+Engine.MoveTo(-56976, 76729, -3412);
+Engine.MoveTo(-56578, 77173, -3200);
+Engine.MoveTo(-56152, 77700, -3100);
+Engine.MoveTo(-55966, 78051, -3032);
+Engine.MoveTo(-55847, 78429, -3028);
+Engine.MoveTo(-56027, 78709, -3021);
+
+Engine.SetTarget('Gatekeeper Ziggurat');
+    Delay(200);
+    Engine.DlgOpen;
+    Delay(300);
+    Engine.DlgSel(1);
+    Delay(300);
+
+Engine.MoveTo(-52100, 79128, -4747);
+Engine.MoveTo(-51918, 79266, -4747);
+Engine.MoveTo(-51931, 79938, -4749);
+Engine.MoveTo(-51921, 80506, -4749);
+Engine.MoveTo(-51905, 81152, -4747);
+
+Delay(300);
+Engine.LoadZone('MartyrButton1.zmap');
+Delay(300);
+Engine.FaceControl(0, true);
+  end;
+end; 
+
+procedure GetToGKofDKE; //dark elf village one
+begin
+  if User.InRange(11298, 16892, -4670, 5000, 300) then 
+  begin
+    Engine.MoveTo(11298, 16892, -4670); //centro de dke
+    Engine.MoveTo(10614, 16996, -4592);
+    Engine.MoveTo(10191, 16791, -4593);
+    Engine.MoveTo(9973, 16218, -4583);
+    Engine.MoveTo(9844, 15828, -4583);
+    Engine.MoveTo(9715, 15585, -4583);  //gk de dke
+    Exit;
+  end;
+end; // Este end fecha a procedure GetToGKofDKE
+
+begin
+  while true do
+  begin
+    
+if User.Dead then
+    begin
+Engine.FaceControl(0, false);
+delay(500);
+Engine.GoHome(rtTown);
+      Delay(3000);
+    end;
+
+
+if not User.InCombat and User.InRange(-51905, 81152, -4747, 500, 600) then
+    begin
+Engine.FaceControl(0, false);
+Engine.MoveTo(-51598, 81178, -4749);
+Engine.MoveTo(-51121, 81183, -4748);
+Engine.MoveTo(-50696, 81178, -4747);
+Engine.MoveTo(-50252, 81163, -4747);
+delay(300);
+Engine.LoadZone('MartyrButton2.zmap');
+delay(300);
+Engine.FaceControl(0, true);
+delay(300);
+engine.settarget('Lilim Priest');
+delay(300);
+Engine.Attack(1000, True);
+delay(1000);
+Engine.Attack(1000, True);
+delay(5000);
+    end;
+
+if not User.InCombat and User.InRange(-50252, 81163, -4747, 600, 600) then
+    begin
+Engine.FaceControl(0, false);
+Engine.MoveTo(-50334, 81161, -4747);
+Engine.MoveTo(-51008, 81173, -4747);
+Engine.MoveTo(-51385, 81202, -4749);
+Engine.MoveTo(-51911, 81217, -4747);
+Engine.LoadZone('MartyrButton2.zmap');
+Engine.FaceControl(0, true);
+engine.settarget('Lilim Priest');
+delay(300);
+Engine.Attack(1000, True);
+delay(1000);
+delay(300);
+Engine.Attack(1000, True);
+delay(1000);
+Engine.Attack(1000, True);
+delay(5000);
+    end;
+
+
+ if not User.Buffs.ByID(1204, buff) then begin
+ Engine.FaceControl(0, false);
+Engine.Entertext('/unstuck');
+delay(18000);
+end;
+
+    if not User.InRange(9759, 15619, -4583, 333, 333) then
+    begin
+      GetToGKofDKE;
+      Delay(1000);
+    end;
+
+    if not User.Buffs.ByID(1204, buff) and User.InRange(9759, 15619, -4583, 333, 333) then
+    begin
+      GetBuff;
+      Delay(1000);
+    end
+    else if User.Buffs.ByID(1204, buff) and User.InRange(9759, 15619, -4583, 333, 333) then
+    begin
+      GetToCata;
+      Delay(1000);
+    end;
+    
+    Delay(500);
+  end;
+end.
