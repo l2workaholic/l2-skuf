@@ -55,7 +55,7 @@ begin
 
 Engine.Entertext('I Will Teleport to SpiderNest');
    Delay(200);
-Engine.SetTarget('Jasmine');
+Engine.SetTarget(30134);
     Delay(200);
     Engine.DlgOpen;
     Delay(300);
