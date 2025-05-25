@@ -1,0 +1,78 @@
+procedure MoveToGuard;
+begin
+  
+  if User.InRange(-12683, -122769, -3112, 1500, 600) then begin
+    Engine.MoveTo(-13058, 122661, -3112);
+    Engine.MoveTo(-13285, 122664, -3048);
+    Engine.MoveTo(-13332, 122314, -2984);
+    Engine.MoveTo(-14142, 122087, -2984);
+    Engine.MoveTo(-14583, 120996, -2984);  
+    Exit;
+  end;
+
+
+  if User.InRange(-15696, -124129, -3112, 1500, 600) then begin
+    Engine.MoveTo(-14409, 123501, -3112);   
+    Engine.MoveTo(-14561, 122109, -3056);    
+    Engine.MoveTo(-14583, 120996, -2984);  
+    Exit;
+  end;
+
+
+  if User.InRange(-14409, 123501, -3112, 1500, 600) then begin
+    Engine.MoveTo(-14561, 122109, -3056);   
+    Engine.MoveTo(-14583, 120996, -2984); 
+    Exit;
+  end;
+
+
+  if User.InRange(-14561, 122109, -3056, 1500, 600) then begin
+    Engine.MoveTo(-14583, 120996, -2984);  
+    Exit;
+  end;
+
+
+  if User.InRange(-14319, 124867, -3120, 1500, 600) then begin
+    Engine.MoveTo(-14409, 123501, -3112);   
+    Engine.MoveTo(-14561, 122109, -3056);    
+    Engine.MoveTo(-14583, 120996, -2984);  
+    Exit;
+  end;
+
+  if User.InRange(-12917, 123746, -3112, 1500, 600) then begin
+    Engine.MoveTo(-14409, 123501, -3112);   
+    Engine.MoveTo(-14561, 122109, -3056);    
+    Engine.MoveTo(-14583, 120996, -2984);  
+    Exit;
+  end;
+end;
+
+begin
+  while not (User.Level = 44) do
+  begin
+    if User.Dead then
+    begin
+      Engine.GoHome(rtTown);
+      while User.Dead do
+        Delay(1000);
+      Delay(5000);
+      MoveToGuard;
+    end
+    else
+    begin
+     
+      if not User.InRange(-14583, 120996, -2984, 500, 300) then
+      begin
+        MoveToGuard;
+        Delay(1000);
+        Continue;
+      end;
+      
+    
+      Engine.SetTarget('Bathis');
+      Engine.Attack(1000, True);
+ 
+    end;
+    Delay(500);
+  end;
+end.
