@@ -22,7 +22,34 @@ begin
      end; 
    end;
   end;
-end;  
+end;
+
+
+procedure ChangeRoom;
+begin
+    Engine.LoadZone('martyr1.zmap');          // FIRST ROOM OF FARM
+    Engine.FaceControl(0, true);
+    while Farm_CC do delay(500);
+    Engine.FaceControl(0, false);
+    Engine.MoveTo(120082, 133574, -4824);                  // Path to second room
+Engine.MoveTo(119472, 133871, -4824);
+Engine.MoveTo(118936, 133912, -4824);
+Engine.MoveTo(118976, 135027, -4824);
+    if user.inrange(118976, 135027, -4824, 100) then // HERE YOU PUT COORDINATES OF THE MIDLE OF SECOND ROOM
+      begin
+      Engine.LoadZone('martyr0.zmap');    // SECOND ROOM OF FARM
+      engine.FaceControl(0, true);
+      while Farm_CC do delay(500);
+      Engine.FaceControl(0, false);
+      Engine.MoveTo(118976, 135027, -4824);                 // Path to first i guess
+      Engine.MoveTo(118936, 133912, -4824);
+Engine.MoveTo(119472, 133871, -4824);
+Engine.MoveTo(120082, 133574, -4824);
+            end; 
+  end; 
+
+
+
 
 procedure GetBuff;
 begin
@@ -64,7 +91,7 @@ begin
     Delay(200);
     Engine.DlgOpen;
     Delay(300);
-    Engine.DlgSel(4);
+    Engine.DlgSel(5);
     Delay(300);
     Engine.DlgSel(1);
     Delay(1000);
@@ -147,32 +174,16 @@ Engine.MoveTo(83094, 149089, -3464); //STAIRS
   end;
 end;
 
+
+
+
+
 begin        //code body HERE
   while true do
   begin
 
-    
-    Engine.LoadZone('martyr1.zmap');          // FIRST ROOM OF FARM
-    Engine.FaceControl(0, true);
-    while Farm_CC do delay(500);
-    Engine.FaceControl(0, false);
-    Engine.MoveTo(120082, 133574, -4824);                  // Path to second room
-Engine.MoveTo(119472, 133871, -4824);
-Engine.MoveTo(118936, 133912, -4824);
-Engine.MoveTo(118976, 135027, -4824);
-    if user.inrange(118976, 135027, -4824, 100) then // HERE YOU PUT COORDINATES OF THE MIDLE OF SECOND ROOM
-      begin
-      Engine.LoadZone('martyr0.zmap');    // SECOND ROOM OF FARM
-      engine.FaceControl(0, true);
-      while Farm_CC do delay(500);
-      Engine.FaceControl(0, false);
-      Engine.MoveTo(118976, 135027, -4824);                 // Path to first i guess
-      Engine.MoveTo(118936, 133912, -4824);
-Engine.MoveTo(119472, 133871, -4824);
-Engine.MoveTo(120082, 133574, -4824);
-            end; 
-  end; 
-end.       
+
+
 
     // 1. First check death
     if User.Dead then
@@ -212,7 +223,14 @@ end.
     begin
       GetToCata;
       Delay(1000);
-    end;      
+    end;
+
+         // 7. Change Room but first check if not in giran
+    if not (User.InRange(82941, 148538, -3464, 5000, 5000) and User.InRange(81644, 148541, -3464, 5000, 5000)) then
+    begin
+      ChangeRoom;
+      Delay(1000);
+           end;  
 
     
     Delay(500);
