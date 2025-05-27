@@ -1,0 +1,174 @@
+//autofarm hunters to catacomb of witch
+
+var
+  item: TL2Item;
+  buff: TL2Buff;
+
+
+procedure GetBuff;
+begin
+  if not User.Buffs.ByID(1204, buff) then 
+  begin
+    Engine.EnterText('Buffs are needed. Buffing...');
+    Delay(500);
+    Engine.SetTarget('Skufidon');
+    Delay(200);
+   Engine.DlgOpen;
+    Delay(1000);
+    Engine.DlgSel(7);
+    Delay(1000);
+    Engine.DlgSel(9);
+     Delay(1000);
+    Engine.DlgSel(10);
+    Delay(1000);
+    Engine.DlgSel(9);
+   Delay(1000);
+    Engine.DlgSel(10);
+    Delay(1000);
+    Engine.DlgSel(11);
+  Delay(1000);
+    Engine.DlgSel(4);
+  Delay(500);
+
+  end;
+end;
+
+
+procedure GetToWitch;
+begin
+Engine.MoveTo(116912, 76719, -2731); //path to Dawn
+Engine.MoveTo(116564, 76245, -2737);
+Engine.MoveTo(116054, 75519, -2657);
+Engine.MoveTo(115710, 75171, -2609);
+Engine.MoveTo(115207, 74760, -2616);
+
+    Engine.SetTarget('Priest of Dawn'); //target dawn
+    Delay(200);
+    Engine.DlgOpen;
+    Delay(300);
+    Engine.DlgSel('teleport to the nearest');
+    Delay(300);
+    Engine.DlgSel('Witch');
+    Delay(1000);
+    
+Engine.MoveTo(136725, 79280, -3709);  //path to zigurat
+Engine.MoveTo(137016, 79207, -3709);
+Engine.MoveTo(137391, 79286, -3709);
+Engine.MoveTo(137503, 79589, -3709);
+Engine.MoveTo(137450, 80060, -3709);
+
+    Engine.SetTarget('Gatekeeper Ziggurat'); //target zigu
+    Delay(200);
+    Engine.DlgOpen;
+    Delay(300);
+    Engine.DlgSel('Teleport');
+    Delay(300);
+
+Engine.MoveTo(140481, 79663, -5435);
+Engine.MoveTo(140736, 79739, -5435);
+Engine.MoveTo(140775, 79975, -5435);
+Engine.MoveTo(140862, 80474, -5437);
+Engine.MoveTo(141386, 80459, -5437);
+Engine.MoveTo(141834, 80475, -5437);
+Engine.MoveTo(141863, 81080, -5437);
+Engine.MoveTo(141837, 81557, -5437);
+            
+    Delay(3600);      //huge delay on MA so pt dont kill them selfs all the time
+    Engine.LoadZone('Witch1.zmap');
+    Delay(300);
+    Engine.FaceControl(0, true);
+end;
+
+procedure GetToGKofHunters; //Hunters One
+begin
+
+  if User.InRange(116478, 76244, -2728, 5000, 300) then //midle of hunters  
+  begin
+    Engine.MoveTo(116765, 76326, -2737); //do outro lado do chafariz
+Engine.MoveTo(117112, 76863, -2703);  //gk de Hunters
+    Exit;
+  end;
+
+  if User.InRange(118297, 74745, -2536, 500, 300) then 
+  begin
+Engine.MoveTo(118278, 75069, -2607);
+Engine.MoveTo(117952, 76009, -2702);
+Engine.MoveTo(117121, 76745, -2702);
+Engine.MoveTo(117107, 76875, -2704);
+Engine.MoveTo(117112, 76863, -2703);  //gk de Hunters
+    Exit;
+  end;
+
+  if User.InRange(119712, 76624, -2272, 800, 300) then 
+  begin
+Engine.MoveTo(119748, 76638, -2283);
+Engine.MoveTo(119470, 76565, -2328);
+Engine.MoveTo(118829, 76366, -2578);
+Engine.MoveTo(118357, 76218, -2684);
+Engine.MoveTo(117912, 76122, -2703);
+Engine.MoveTo(117077, 76788, -2709);
+Engine.MoveTo(117112, 76863, -2703);  //gk de Hunters
+    Exit;
+  end;
+
+  if User.InRange(117067, 79018, -2256, 800, 300) then 
+  begin
+Engine.MoveTo(117123, 79021, -2271);
+Engine.MoveTo(116922, 78818, -2316);
+Engine.MoveTo(116610, 78313, -2620);
+Engine.MoveTo(116261, 77725, -2689);
+Engine.MoveTo(116383, 77317, -2721);
+Engine.MoveTo(116964, 76883, -2716);
+Engine.MoveTo(117112, 76863, -2703);  //gk de Hunters
+    Exit;
+  end;
+
+end; // Este end fecha a procedure GetToGKofHunters
+
+begin        //code body HERE
+  while true do
+  begin
+    
+    // 1. First check death
+    if User.Dead then
+    begin
+      Engine.FaceControl(0, false);
+      delay(500);
+      Engine.GoHome(rtTown);
+      Delay(3000);
+    end;
+
+    // 3. Then check if we're unbuffed
+    if not User.Buffs.ByID(1204, buff) and not User.InRange(117112, 76863, -2703, 333, 333) then 
+    begin
+      Engine.FaceControl(0, false);
+      Engine.Entertext('/unstuck');
+      delay(18000);
+      GetToGKofHunters;
+    end;
+
+    // 4. Then check if we need to return to GK
+    if not User.InRange(117112, 76863, -2703, 333, 333) then
+    begin
+      GetToGKofHunters;
+      GetBuff;
+      Delay(1000);
+    end;
+
+    // 5. if we dont have buffs 
+    if not User.Buffs.ByID(1204, buff) and User.InRange(117112, 76863, -2703, 333, 333) then
+    begin
+      GetBuff;
+      Delay(1000);
+    end;  
+
+    // 6. Finally, if we have buffs and are at GK, teleport
+    if User.Buffs.ByID(1204, buff) and User.InRange(117112, 76863, -2703, 333, 333) then
+    begin
+      GetToWitch;
+      Delay(1000);
+    end;      
+
+    Delay(500);
+  end;
+end.
