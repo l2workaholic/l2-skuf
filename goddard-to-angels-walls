@@ -1,0 +1,365 @@
+// VLAD AND ALL
+
+//GODDARD TO WALL OF ARGOS 
+
+var
+  item: TL2Item;
+  buff: TL2Buff;
+
+
+procedure GetBuff;
+begin
+  if not User.Buffs.ByID(1204, buff) then 
+  begin
+    Engine.EnterText('Buffs are needed. Buffing...');
+    Delay(500);
+    Engine.SetTarget('Skufidon');
+    Delay(200);
+   Engine.DlgOpen;
+    Delay(1000);
+    Engine.DlgSel(7);
+    Delay(1000);
+    Engine.DlgSel(9);
+     Delay(1000);
+    Engine.DlgSel(10);
+    Delay(1000);
+    Engine.DlgSel(9);
+   Delay(1000);
+    Engine.DlgSel(10);
+    Delay(1000);
+    Engine.DlgSel(11);
+  Delay(1000);
+    Engine.DlgSel(4);
+  Delay(500);
+
+  end;
+end;
+
+
+procedure GetToWall;
+begin
+  if User.InRange(147947, -55288, -2741, 300, 200) and User.Buffs.ByID(1204, buff) then 
+  begin
+    Engine.SetTarget(31275); //id da gk de goddard
+    Delay(200);
+    Engine.DlgOpen;
+    Delay(300);
+    Engine.DlgSel(1);
+    Delay(300);
+    Engine.DlgSel('Wall of Argos');
+    Delay(1000);
+Engine.MoveTo(164987, -47984, -3569);
+Engine.MoveTo(165805, -47235, -3591);
+Engine.MoveTo(166436, -46905, -3570);
+Engine.MoveTo(167325, -45638, -3541);
+Engine.MoveTo(167885, -44860, -3501);
+Engine.MoveTo(168360, -44110, -3447);
+Engine.MoveTo(168965, -43428, -3461);
+Engine.MoveTo(168814, -42559, -3458);
+Engine.MoveTo(168488, -41760, -3460);
+Engine.MoveTo(168390, -41139, -3482);
+Engine.MoveTo(168364, -40528, -3488);
+Engine.MoveTo(168729, -39717, -3533);
+Engine.MoveTo(170074, -39424, -3459);
+Engine.MoveTo(170782, -40611, -3493);
+Engine.MoveTo(170920, -41223, -3474);
+Engine.MoveTo(171197, -41838, -3454);
+Engine.MoveTo(171756, -42449, -3451);
+Engine.MoveTo(172347, -42986, -3450);
+Engine.MoveTo(172780, -43684, -3457);
+Engine.MoveTo(172731, -44273, -3478);
+Engine.MoveTo(172663, -44888, -3473);
+Engine.MoveTo(172286, -45631, -3482);
+Engine.MoveTo(171982, -46310, -3462);
+Engine.MoveTo(172525, -47244, -3467);
+Engine.MoveTo(172912, -48012, -3422);
+Engine.MoveTo(172489, -48372, -3460);  //GOD PLACE TO FARM
+Engine.MoveTo(173052, -49057, -3440);
+Engine.MoveTo(173758, -49849, -3392);
+Engine.MoveTo(174794, -50751, -3432);
+Engine.MoveTo(176247, -50101, -3360);
+Engine.MoveTo(177664, -50084, -3384);
+Engine.MoveTo(179006, -50903, -3312);
+Engine.MoveTo(180790, -50594, -3384);
+Engine.MoveTo(181625, -49819, -3256);
+Engine.MoveTo(183219, -49120, -3200);
+Engine.MoveTo(184228, -50026, -3136); //angels
+
+    Delay(3600);      //huge delay on MA so pt dont kill them selfs all the time
+    Engine.LoadZone('DeepInArgos.zmap');
+    Delay(300);
+    Engine.FaceControl(0, true);
+  end;
+end;
+
+procedure GetToGK; //goddard one
+begin
+  if User.InRange(144834, -55604, -2989, 1500, 300) then 
+  begin
+    Engine.MoveTo(145031, -56469, -2989);
+    Engine.MoveTo(145391, -56966, -2989);//esquerda baixa
+    Engine.MoveTo(146114, -56461, -2789); //escada esquerda
+    Engine.MoveTo(146736, -56052, -2789); //esquerda alta
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(145014, -56462, -2989, 1500, 600) then 
+  begin
+    Engine.MoveTo(145391, -56966, -2989);//esquerda baixa
+    Engine.MoveTo(146114, -56461, -2789); //escada esquerda
+    Engine.MoveTo(146736, -56052, -2789); //esquerda alta
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(145094, -57234, -2989, 1500, 600) then 
+  begin
+    Engine.MoveTo(145391, -56966, -2989);//esquerda baixa
+    Engine.MoveTo(146114, -56461, -2789); //escada esquerda
+    Engine.MoveTo(146736, -56052, -2789); //esquerda alta
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(145570, -57774, -2989, 1500, 600) then 
+  begin
+    Engine.MoveTo(145094, -57234, -2989);
+    Engine.MoveTo(145391, -56966, -2989);//esquerda baixa
+    Engine.MoveTo(146114, -56461, -2789); //escada esquerda
+    Engine.MoveTo(146736, -56052, -2789); //esquerda alta
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(146195, -58155, -2989, 1500, 600) then 
+  begin
+    Engine.MoveTo(145570, -57774, -2989);
+    Engine.MoveTo(145094, -57234, -2989);
+    Engine.MoveTo(145391, -56966, -2989);//esquerda baixa
+    Engine.MoveTo(146114, -56461, -2789); //escada esquerda
+    Engine.MoveTo(146736, -56052, -2789); //esquerda alta
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(146962, -58297, -2989, 1500, 600) then 
+  begin
+    Engine.MoveTo(147701, -58293, -2989); //meio baixo
+    Engine.MoveTo(147708, -57599, -2889); //escada de baixo
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(147596, -58575, -2989, 1500, 600) then 
+  begin
+    Engine.MoveTo(147701, -58293, -2989); //meio baixo
+    Engine.MoveTo(147708, -57599, -2889); //escada de baixo
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(148613, -58257, -2989, 1500, 600) then 
+  begin
+    Engine.MoveTo(147596, -58575, -2989);
+    Engine.MoveTo(147701, -58293, -2989); //meio baixo
+    Engine.MoveTo(147708, -57599, -2889); //escada de baixo
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(149310, -58052, -2989, 1500, 600) then 
+  begin
+    Engine.MoveTo(148613, -58257, -2989);
+    Engine.MoveTo(147596, -58575, -2989);
+    Engine.MoveTo(147701, -58293, -2989); //meio baixo
+    Engine.MoveTo(147708, -57599, -2889); //escada de baixo
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(150020, -57596, -2989, 1500, 600) then 
+  begin
+    Engine.MoveTo(150028, -56965, -2989); //direita baixa
+    Engine.MoveTo(149289, -56437, -2789); //escada direita
+    Engine.MoveTo(148555, -55926, -2789); //direita alta
+    Engine.MoveTo(147701, -58293, -2989); //meio baixo
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(150561, -56688, -2989, 1500, 600) then 
+  begin
+    Engine.MoveTo(150028, -56965, -2989); //direita baixa
+    Engine.MoveTo(149289, -56437, -2789); //escada direita
+    Engine.MoveTo(148555, -55926, -2789); //direita alta
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(150766, -55685, -2989, 1500, 600) then 
+  begin
+    Engine.MoveTo(150561, -56688, -2989);
+    Engine.MoveTo(150028, -56965, -2989); //direita baixa
+    Engine.MoveTo(149289, -56437, -2789); //escada direita
+    Engine.MoveTo(148555, -55926, -2789); //direita alta
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(148985, -56132, -2789, 1500, 600) then 
+  begin
+    Engine.MoveTo(148555, -55926, -2789); //direita alta
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(147711, -56708, -2789, 1500, 600) then 
+  begin
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(146573, -56140, -2789, 1500, 600) then 
+  begin
+    Engine.MoveTo(147708, -56937, -2789); //meio alto
+    Engine.MoveTo(147707, -56194, -2789); //inicio da escada
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+
+  if User.InRange(147729, -55686, -2749, 1500, 600) then 
+  begin
+    Engine.MoveTo(147710, -55739, -2757); //meio da escada
+    Engine.MoveTo(147947, -55288, -2741); //GK GODDARD
+    Exit;
+  end;
+end;
+
+begin        //code body HERE
+  while true do
+  begin
+    {if not User.InCombat and User.InRange(120082, 133574, -4824, 800, 600) then
+    begin
+      Engine.FaceControl(0, false);
+      Engine.MoveTo(120082, 133574, -4824);
+      Engine.MoveTo(119472, 133871, -4824);
+      Engine.MoveTo(118936, 133912, -4824);
+      Engine.MoveTo(118976, 135027, -4824);
+      Engine.LoadZone('Martyr0.zmap');
+      delay(300);
+      Engine.FaceControl(0, true);
+      delay(300);
+      engine.settarget('Lilim Assassin');
+      delay(300);
+      Engine.Attack(1000, True);
+      delay(1000);
+      Engine.Attack(1000, True);
+      delay(5000);
+    end;
+
+    if not User.InCombat and User.InRange(118976, 135027, -4824, 600, 600) then
+    begin
+      Engine.FaceControl(0, false);
+      Engine.MoveTo(118976, 135027, -4824);
+      Engine.MoveTo(118936, 133912, -4824);
+      Engine.MoveTo(119472, 133871, -4824);
+      Engine.MoveTo(120082, 133574, -4824);
+      Engine.LoadZone('Martyr1.zmap');
+      Engine.FaceControl(0, true);
+      engine.settarget('Lilim Assassin');
+      delay(300);
+      Engine.Attack(1000, True);
+      delay(1000);
+      delay(300);
+      Engine.Attack(1000, True);
+      delay(1000);
+      Engine.Attack(1000, True);
+      delay(5000);
+    end;}       
+
+    // 1. First check death
+    if User.Dead then
+    begin
+      Engine.FaceControl(0, false);
+      delay(500);
+      Engine.GoHome(rtTown);
+      Delay(3000);
+    end;
+
+    // 3. Then check if we're unbuffed
+    if not User.Buffs.ByID(1204, buff) and not User.InRange(147947, -55288, -2741, 333, 333) then 
+    begin
+      Engine.FaceControl(0, false);
+      Engine.Entertext('/unstuck');
+      delay(18000);
+      GetToGK;
+    end;
+
+    // 4. Then check if we need to return to GK
+    if not User.InRange(147947, -55288, -2741, 333, 333) then
+    begin
+      GetToGK;
+      GetBuff;
+      Delay(1000);
+    end;
+
+    // 5. if we dont have buffs 
+    if not User.Buffs.ByID(1204, buff) and User.InRange(147947, -55288, -2741, 333, 333) then
+    begin
+      GetBuff;
+      Delay(1000);
+    end;  
+
+    // 6. Finally, if we have buffs and are at GK, teleport
+    if User.Buffs.ByID(1204, buff) and User.InRange(147947, -55288, -2741, 333, 333) then
+    begin
+      GetToWall;
+      Delay(1000);
+    end;      
+
+    Delay(500);
+  end;
+end.
